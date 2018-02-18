@@ -53,6 +53,10 @@ small {
 	overflow: hidden;
 }
 
+.standout {
+	background-color: #eee;
+}
+
 .logo {
 	font-family: "Stoke", serif;
 	}
@@ -89,6 +93,23 @@ small {
 		display: inline-block;
 	}
 
+.categories {
+	position: absolute;
+	z-index: 100;
+	font-size: 1.2em;
+	line-height: 2em;
+	padding: 0.5em 0;
+}
 
+.categories a {
+	color: #444;
+	display: block;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.categories a:hover {
+	background-color: #e5e5e5;
+}
 
 
