@@ -1,0 +1,94 @@
+/* ===============================================================
+ * Stile base applicabile ad ogni selettore di elemento generico
+ * ===============================================================*/
+body, *, *:before, *:after {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #e5e5e5;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	line-height: 1.5em;
+}
+
+h1 {
+	font-size: 1.8em;
+	line-height: 1em;
+}
+
+h2 {
+	font-size: 1.4em;
+	line-height: 1em;
+}
+
+a, a:visited {
+	color: inherit;
+	text-decoration: none;
+}
+
+em {
+	font-weight: bold;
+}
+
+small {
+	font-size: 0.8em;
+}
+ /* ===============================================================
+ * Classi di Stile che cominiciano con la "l-" si rifersicono al
+ * "layout" dei componenti (raggruppando concetti )base applicabile ad ogni selettore di elemento generico
+ * ===============================================================*/
+.l-pad {
+	padding: 1em;
+}
+
+.l-sidebar {
+	width: 250px;
+}
+
+ /* ===============================================================
+ * Stili modulari e riusabili
+ * ===============================================================*/
+.cf {
+	overflow: hidden;
+}
+
+.logo {
+	font-family: "Stoke", serif;
+	}
+
+	.logo h1 {
+		display: inline-block;
+		margin-right: 0.5em;
+	}
+
+.logo-sub {
+	color: #333;
+	font-size: 0.6em;
+	font-weight: 100;
+}
+
+.topbar {
+	background-color: #fff;
+}
+
+.topbar-title {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	color: #fff;
+	background-color: #1aa1e1;
+	float: left;
+	}
+
+	.topbar-title > i {
+		font-size: 1.5em;
+		margin-right: 0.5em;
+	}
+
+	.topbar-title > h2 {
+		display: inline-block;
+	}
+
+
+
+
