@@ -56,6 +56,16 @@ small {
 	padding-left: 270px;
 }
 
+.l-row {
+	display: table;
+	width: 100%;
+}
+
+.l-column {
+	display: table-cell;
+	vertical-align: top;
+}
+
  /* ===============================================================
  * Stili modulari e riusabili
  * ===============================================================*/
@@ -144,3 +154,29 @@ small {
 	.thumb-link:hover > .overlay {
 		display: block;
 	}
+
+.books,
+.book {
+	display: none;
+}
+
+.book-header {
+	border-bottom: 2px solid #ccc;
+}
+
+.title {
+	font-size: 1.8em;
+	line-height: 1em;
+	padding-bottom: 0.2em;
+}
+
+.thumb-image {
+	width: 220px;
+}
+
+ /* ===============================================================
+ * Classi che descrivono lo stato
+ * ===============================================================*/
+.is-visible {
+	display: block;
+}
