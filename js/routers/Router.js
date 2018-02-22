@@ -1,7 +1,7 @@
 app.routers.Router = Backbone.Router.extend({
-	routers: {
-		'category/:id/book/:bookId': 'book',		
-		'category/:id': 'category',
+	routes: {
+		'category/:id/book/:bookId': 'book',		// #category/<something>/book/<something>
+		'category/:id': 'category',							// #category/<something>
 		'': 'home',
 		'*default': 'unknown'
 	},
