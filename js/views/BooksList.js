@@ -1,6 +1,7 @@
 app.views.BooksList = Backbone.View.extend({
 	initialize: function(options) {
-		this.options = options
+		this.options = options;
+		this.listenTo(this.collection, "change reset", this.render);
 	},
 	render: function() {
 		console.log('BooksList:render');
@@ -8,5 +9,3 @@ app.views.BooksList = Backbone.View.extend({
 		return this;
 	}
 });
-
-books.render();

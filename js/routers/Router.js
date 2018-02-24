@@ -22,7 +22,16 @@ app.routers.Router = Backbone.Router.extend({
 			collection: app.data.books
 		});
 
-		app.data.books.fetch();
+		// recupero elemento da referenziare
+		$('[data-id=books-list]').append(app.data.currentView.$el);
+
+		// attivo il relativo elemento, lo mostro
+		_activateBooksListPanel();
+
+		// renderizzo la vista
+		app.data.currentView.render();
+
+		app.data.books.fetch({ reset: true });
 	},
 
 	book: function(id, bookId) {
@@ -31,5 +40,15 @@ app.routers.Router = Backbone.Router.extend({
 
 	unknown: function() {
 		console.log("Route sconosciuta...");
+	},
+
+	_activateBooksListPanel: function() {
+		$('[data-id=books-wrapper] .is-visible').removeClass('is-visible');
+		$('[data-id=books-list]').addClass('is-visible');
+	},
+
+	_activateBookDetailPanel: function() {
+		$('[data-id=books-wrapper] .is-visible').removeClass('is-visible');
+		$('[data-id=book]').addClass('is-visible');
 	}
 });
