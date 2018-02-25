@@ -17,16 +17,18 @@ app.routers.Router = Backbone.Router.extend({
 		// loggo i valori recuperati da chiamata metodo url()
 		console.log(app.data.books.url());
 
+		this._cleanupCurrentView();
+
 		// view per mostrare i dati recuperati
 		app.data.currentView = new app.views.BooksList({
 			collection: app.data.books
 		});
 
 		// recupero elemento da referenziare
-		$('[data-id=books-list]').append(app.data.currentView.$el);
+		$('[data-id=books-list]').empty().append(app.data.currentView.$el);
 
 		// attivo il relativo elemento, lo mostro
-		_activateBooksListPanel();
+		this._activateBooksListPanel();
 
 		// renderizzo la vista
 		app.data.currentView.render();
@@ -50,5 +52,14 @@ app.routers.Router = Backbone.Router.extend({
 	_activateBookDetailPanel: function() {
 		$('[data-id=books-wrapper] .is-visible').removeClass('is-visible');
 		$('[data-id=book]').addClass('is-visible');
+	},
+
+	// utility per pulire la view
+	_cleanupCurrentView: function() {
+		if (app.data.currentView) {
+			app.data.currentView.remove();
+			app.data.currentView = null;
+		}	
 	}
+
 });
