@@ -53,7 +53,11 @@ small {
 
 /* per aggiungere spazio vuoto a sx dei contenuti */
 .l-content-constrained {
-	padding-left: 270px;
+}
+@media (min-width: 700px) {
+	.l-content-constrained {
+		padding-left: 270px;
+	}	
 }
 
 .l-row {
@@ -109,10 +113,10 @@ small {
 	font-weight: 300;
 	color: #fff;
 	background-color: #1aa1e1;
-	float: left;
+	display: inline-block;
 	}
 
-	.topbar-title > i {
+	.topbar-title i {
 		font-size: 1.5em;
 		margin-right: 0.5em;
 	}
@@ -122,11 +126,17 @@ small {
 	}
 
 .categories {
+	display: none;
 	position: absolute;
 	z-index: 100;
 	font-size: 1.2em;
 	line-height: 2em;
 	padding: 0.5em 0;
+}
+@media (min-width: 700px) {
+	.categories {
+		display: block;
+	}
 }
 
 .categories a {
@@ -140,9 +150,13 @@ small {
 	background-color: #e5e5e5;
 }
 
+.thumbs {
+	text-align: center;
+}
+
 .thumb {
-	float: left;
-	height: 207px;
+	display: inline-block;
+	max-height: 207px;
 	margin: 0.5em 0.2em;
 	}
 

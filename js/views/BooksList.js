@@ -5,7 +5,7 @@ app.views.BooksList = Backbone.View.extend({
 	},
 	render: function() {
 		console.log('BooksList:render');
-		this.$el.html('<ul></ul>');
+		this.$el.html('<ul class="thumbs"></ul>');
 		// creo elemento relativo a ul dentro la view
 		var ulEl = this.$('ul');
 

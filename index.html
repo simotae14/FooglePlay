@@ -4,6 +4,8 @@
 	<meta charset="utf-8">
 	<title>Books on Foogle play</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- responsivita -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<!-- reset css -->
 	<link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
 	<!-- font-awesome -->
@@ -27,31 +29,33 @@
 		</div>
 		<div class="topbar cf">
 			<span class="topbar-title l-sidebar l-pad">
+				<a href="#"><i class="fa fa-bars"></i></a>
 				<i class="fa fa-book"></i>
 				<h2>Libri</h2>
 			</span>
+
+			<div class="categories l-sidebar standout">
+				<ul>
+					<li><a href="#category/all">Tutti</a></li>
+					<li><a href="#category/scifi">Fantascienza</a></li>
+					<li><a href="#category/romance">Romanzo</a></li>
+					<li><a href="#category/horror">Horror</a></li>
+					<li><a href="#category/sport">Sport</a></li>
+				</ul>
+			</div>
+
 		</div>
 
 		<div>
-		
-
 		</div>
 	</header>
 
-	<div class="categories l-sidebar standout">
-		<ul>
-			<li><a href="#category/all">Tutti</a></li>
-			<li><a href="#category/scifi">Fantascienza</a></li>
-			<li><a href="#category/romance">Romanzo</a></li>
-			<li><a href="#category/horror">Horror</a></li>
-			<li><a href="#category/sport">Sport</a></li>
-		</ul>
-	</div>
+
 	
 	<!-- container dell'elenco libri e del dettaglio -->
 	<div class="books-wrapper" data-id="books-wrapper">
 		<div class="books l-content l-content-constrained" data-id="books-list">
-			<ul>
+			<ul class="thumbs">
 				<li class="thumb">
 					<a class="thumb-link" href="#">
 						<span class="overlay"></span>
