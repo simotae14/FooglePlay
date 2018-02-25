@@ -38,6 +38,26 @@ app.routers.Router = Backbone.Router.extend({
 
 	book: function(id, bookId) {
 		console.log("libro " + bookId + " per la categoria " + id);
+
+		// Creo istanza della collection
+		app.data.book = new app.models.Book({id: bookId});
+		
+		// pulisco area view
+		this._cleanupCurrentView();
+
+		// creo la vista associata
+		app.data.currentView = new app.views.BookDetail({
+			model: app.data.book
+		});
+
+		// attivo il pannello relativo al dettaglio
+		this._activateBookDetailPanel();
+
+		// appendo il contenuto creato all'ele di riferimento
+		$('[data-id=book]').empty().append(app.data.currentView.$el);
+
+		// recupero i dati
+		app.data.book.fetch();
 	},
 
 	unknown: function() {
