@@ -27,20 +27,20 @@
 				<h1>Foogle <span class="logo-sub">play</span></h1>
 			</span>
 		</div>
-		<div class="topbar cf">
+		<div class="topbar cf" data-id="topbar">
 			<span class="topbar-title l-sidebar l-pad">
-				<a href="#"><i class="fa fa-bars"></i></a>
+				<a data-id="category-toggle" class="category-toggle" href="#"><i class="fa fa-bars"></i></a>
 				<i class="fa fa-book"></i>
 				<h2>Libri</h2>
 			</span>
 
-			<div class="categories l-sidebar standout">
+			<div class="categories l-sidebar standout" data-id="categories-panel">
 				<ul>
-					<li><a href="#category/all">Tutti</a></li>
-					<li><a href="#category/scifi">Fantascienza</a></li>
-					<li><a href="#category/romance">Romanzo</a></li>
-					<li><a href="#category/horror">Horror</a></li>
-					<li><a href="#category/sport">Sport</a></li>
+					<li><a data-id="category" href="#category/all">Tutti</a></li>
+					<li><a data-id="category" href="#category/scifi">Fantascienza</a></li>
+					<li><a data-id="category" href="#category/romance">Romanzo</a></li>
+					<li><a data-id="category" href="#category/horror">Horror</a></li>
+					<li><a data-id="category" href="#category/sport">Sport</a></li>
 				</ul>
 			</div>
 
@@ -117,6 +117,7 @@
 	<script src="js/models/Books.js"></script>
 	<script src="js/views/BooksList.js"></script>
 	<script src="js/views/BookDetail.js"></script>
+	<script src="js/views/TopBar.js"></script>
 
 	<script src="js/main.js"></script>
 </body>

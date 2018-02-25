@@ -125,6 +125,15 @@ small {
 		display: inline-block;
 	}
 
+.category-toggle {
+	}
+	@media (min-width: 700px) {
+		.category-toggle {
+			display: none;
+		}
+	}
+
+
 .categories {
 	display: none;
 	position: absolute;
