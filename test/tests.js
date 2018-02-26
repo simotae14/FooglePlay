@@ -18,3 +18,36 @@ describe("models/Books", function() {
 		expect(books.url()).to.equal('api/books_categoryId.json');
 	});
 });
+
+// testo la view del Dettaglio Libro
+describe("views/BookDetail", function() {
+	// testo l'inizializzazione
+	describe("When initializing", function() {
+		it("It re-renders when the model changes", function() {
+			// creo istanza del model
+			var model = new app.models.Book({id: "id1"});
+			// verifico che il render venga chiamato
+			// creo lo stub di render
+			var render = sinon.stub(app.views.BookDetail.prototype, "render");
+			// creo ora la nostra view passandogli i parametri
+			var view = new app.views.BookDetail({
+				model: model
+			});
+
+			// controllo se cambiando qualsiasi ptu nel model
+			model.set("property", "value");
+
+			// ora se chiamo il render chaimo lo stub e usando questo so se viene chiamato
+			// o meno
+			expect(render.called).to.be.true;
+
+			// riporto il render al suo valore originale
+			app.views.BookDetail.prototype.render.restore();
+		});
+	});
+
+	// testo quando viene renderizzata la view
+	describe("When rendering", function() {
+
+	});
+});
