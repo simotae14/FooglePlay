@@ -29,8 +29,10 @@
           <%= info.title %>
         </div>
         <div>
-          <%= (info.authors ? ("<em>" + info.authors.join(" - ") + "</em> - ") : "") + info.publishedDate %><br>
-          <%=    (info.publisher ? (info.publisher + ' - Publisher') : '') %>
+          <span data-id="published-authors"><%= (info.authors ? ("<em>" + info.authors.join(" - ") + "</em> - ") : "") + info.publishedDate %></span>
+
+          <br>
+          <span data-id="publisher"><%=    (info.publisher ? (info.publisher + ' - Publisher') : '') %></span>
         </div>
       </div>
     </header>

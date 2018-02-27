@@ -48,6 +48,95 @@ describe("views/BookDetail", function() {
 
 	// testo quando viene renderizzata la view
 	describe("When rendering", function() {
+		var modelTemplate = {
+			"volumeInfo": {
+  			"title": "Sport",
+  			"subtitle": "A Critical Sociology",
+  			"authors": [
+   				"Richard Giulianotti"
+  			],
+  			//"publisher": "Polity",
+  			"publishedDate": "2005",
+  			"description": "In this lively new book, Richard Giulianotti provides a critical sociological interpretation of modern sport. As global festivals such as the Olympic games and football's World Cup demonstrate, sport's social, political, economic and cultural significance is becoming increasingly apparent across the world. Its popularity alone means that sociologists cannot ignore sport. \u003cbr\u003e\u003cbr\u003e\u003cbr\u003e \u003cbr\u003e\u003cbr\u003e\u003cbr\u003eChapter-by-chapter, Giulianotti offers a cogent examination of a range of widely taught sociological theories and issues that relate to sport. These include functionalism, Weberian sociology, Marxism, postmodern sociology, and globalisation. The author's use of an international range of case studies and research, about a wide variety of sports, helps to make his account especially accessible to undergraduate readers. 'Sport: a critical sociology' will therefore have strong appeal to upper-level undergraduates on courses such as sport and leisure studies, cultural studies, and modern social theory.",
+  			"imageLinks": {
+   				"smallThumbnail": "http://books.google.co.uk/books?id=-fGmwe2AVWIC&printsec=frontcover&img=1&zoom=5&edge=curl&imgtk=AFLRE70vZEnGOiIL0VVkl6vQCNhpoOXvNE9O00SYSO1bDKhqmoL0IuvH-JbGrtR8neBXF6lX5fn3Rgw0V5WkOKb-y7yX0UmOouniZcTGrf_VRkgNHBQfyFY&source=gbs_api",
+   				"thumbnail": "http://books.google.co.uk/books?id=-fGmwe2AVWIC&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE73AE09Yy-8kht26JEYWk3wSTwh68lxELYfC-3NBbWQI8q2f2XmK5K5oQ38EQ0-7b90aiy_QaY5uZo1Ka1Oy7HlSi583OHfP2IhLlanw9Z8BF6UElFA&source=gbs_api",
+   				"small": "http://books.google.co.uk/books?id=-fGmwe2AVWIC&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE71kS08aeJjizIerVYobNjI3X9tHKP-oqsYNOIs6KztEknC7zz5QlhlwKxYAKZ7iKTBuJz2SA7d3jjHNC3EqSKSTc_sVAyCUylWM5KWBu6nqnQ_tvGg&source=gbs_api"
+  			}
+  		}
+		};
+		it("it doesn't display the publisher if not present in the JSON data", function() {
+			// creo il model
+			var model = new app.models.Book(modelTemplate);
+			// creo la view
+			var view = new app.views.BookDetail({
+				model: model
+			});
 
+			view.render();
+
+			// controllo che la vista non contenga il pubblicatore
+			expect(view.$('[data-id=publisher]').html()).to.equal("");
+		});
+		it("it renders the author and the publisher date", function() {
+			var model = new app.models.Book(modelTemplate);
+			var view = new app.views.BookDetail({
+				model: model
+			});
+
+			view.render();
+
+			// controllo che la vista non contenga il pubblicatore
+			expect(view.$('[data-id=published-authors]').text()).to.equal("Richard Giulianotti - 2005");
+		});
 	});
 });
+
+// creo i test per il Router
+describe("routers/Router", function() {
+	var router;
+
+	beforeEach(function() {
+		// creo un nuovo costruttore per il Router moccato
+		var MockRouter = app.routers.Router.extend({
+			home: sinon.spy(),
+			category: sinon.spy(),
+			book: sinon.spy(),
+			unknown: sinon.spy()
+		});
+		// creo istanza del mio router moccato
+		router = new MockRouter();
+
+		// controllo che il router non sia già stato inizializzato
+		if(Backbone.History.started !== true) {
+			// start del router
+			Backbone.history.start();
+		}
+
+	});
+
+	afterEach(function() {
+		router.navigate("", {trigger:true});
+	});
+
+	app.routers.Router.extend({});
+
+	it('routes to home if no hash fragment is present', function() {
+		router.navigate("", {trigger:true});
+		expect(router.home.called).to.be.true;
+	});
+	it('routes to category if hash fragment contains "category/<catid>"', function() {
+		router.navigate("category/categoryId", {trigger:true});
+		expect(router.category.called).to.be.true;
+	});
+	it('routes to book if hash fragment contains "category/id/book/id"', function() {
+		router.navigate("category/id/book/id", {trigger:true});
+		expect(router.book.called).to.be.true;
+	});
+	it('routes to unknown if has fragment is not recognized', function() {
+		router.navigate("something/different", {trigger:true});
+		expect(router.unknown.called).to.be.true;
+	});
+});
+
+
